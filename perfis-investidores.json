@@ -1,0 +1,260 @@
+{
+  "profiles": {
+    "conservador": {
+      "name": "Investidor Conservador",
+      "description": "Busca preservar capital com retornos consistentes e baixo risco",
+      "criteria": {
+        "objetivo": ["acumular_patrimonio"],
+        "capacidade_mensal": ["ate_50", "51_200"],
+        "experiencia": ["nunca_investi", "poupanca_cdb"],
+        "tolerancia_risco": ["sem_riscos", "pequenos_riscos"]
+      },
+      "strategy": {
+        "allocation": {
+          "renda_fixa": 85,
+          "renda_variavel": 15
+        },
+        "recommended_investments": [
+          {
+            "tipo": "CDB 100% CDI",
+            "percentual": 50,
+            "motivo": "Liquidez e segurança para reserva de emergência"
+          },
+          {
+            "tipo": "Tesouro IPCA+",
+            "percentual": 35,
+            "motivo": "Proteção contra inflação no longo prazo"
+          },
+          {
+            "tipo": "Fundo de Índice (IVVB11)",
+            "percentual": 15,
+            "motivo": "Exposição gradual à renda variável"
+          }
+        ],
+        "monthly_plan": "Invista de forma consistente todo mês, mesmo que seja um valor pequeno. Priorize a formação da reserva de emergência antes de partir para renda variável.",
+        "warnings": [
+          "Não pare os aportes mesmo em tempos difíceis",
+          "Evite resgatar investimentos antes do prazo",
+          "Não se deixe levar por modismos do mercado"
+        ]
+      }
+    },
+    "moderado": {
+      "name": "Investidor Moderado",
+      "description": "Equilibra segurança e rentabilidade com exposição controlada a riscos",
+      "criteria": {
+        "objetivo": ["acumular_patrimonio", "pequenos_investimentos"],
+        "capacidade_mensal": ["201_500", "501_1000"],
+        "experiencia": ["poupanca_cdb", "fundos_acoes"],
+        "tolerancia_risco": ["pequenos_riscos", "riscos_retornos"]
+      },
+      "strategy": {
+        "allocation": {
+          "renda_fixa": 60,
+          "renda_variavel": 35,
+          "internacional": 5
+        },
+        "recommended_investments": [
+          {
+            "tipo": "Tesouro Selic",
+            "percentual": 30,
+            "motivo": "Base sólida com liquidez"
+          },
+          {
+            "tipo": "CDB com prazo",
+            "percentual": 30,
+            "motivo": "Melhor rentabilidade que a poupança"
+          },
+          {
+            "tipo": "ETF BOVA11",
+            "percentual": 25,
+            "motivo": "Diversificação em ações brasileiras"
+          },
+          {
+            "tipo": "FII diversificado",
+            "percentual": 10,
+            "motivo": "Renda passiva com fundos imobiliários"
+          },
+          {
+            "tipo": "ETF internacional",
+            "percentual": 5,
+            "motivo": "Proteção cambial"
+          }
+        ],
+        "monthly_plan": "Faça aportes mensais consistentes priorizando primeiro a renda fixa. Gradualmente aumente a exposição à renda variável conforme ganha experiência.",
+        "warnings": [
+          "Não concentre tudo em um só tipo de ativo",
+          "Rebalanceie a carteira semestralmente",
+          "Mantenha disciplina nos aportes mensais"
+        ]
+      }
+    },
+    "agressivo": {
+      "name": "Investidor Agressivo",
+      "description": "Busca máxima rentabilidade aceitando volatilidade e riscos maiores",
+      "criteria": {
+        "objetivo": ["trades", "quantia_maior"],
+        "capacidade_mensal": ["mais_1000"],
+        "experiencia": ["fundos_acoes", "experiente_trades"],
+        "tolerancia_risco": ["riscos_retornos", "adrenalina_risco"]
+      },
+      "strategy": {
+        "allocation": {
+          "renda_fixa": 20,
+          "renda_variavel": 60,
+          "internacional": 15,
+          "alternativos": 5
+        },
+        "recommended_investments": [
+          {
+            "tipo": "Tesouro Selic",
+            "percentual": 20,
+            "motivo": "Reserva para oportunidades"
+          },
+          {
+            "tipo": "Ações individuais",
+            "percentual": 40,
+            "motivo": "Potencial de ganhos elevados"
+          },
+          {
+            "tipo": "ETFs setoriais",
+            "percentual": 20,
+            "motivo": "Exposição a setores específicos"
+          },
+          {
+            "tipo": "REITs internacionais",
+            "percentual": 10,
+            "motivo": "Diversificação geográfica"
+          },
+          {
+            "tipo": "Stocks americanas",
+            "percentual": 5,
+            "motivo": "Acesso ao mercado mais líquido"
+          },
+          {
+            "tipo": "Crypto (Bitcoin/Ethereum)",
+            "percentual": 5,
+            "motivo": "Hedge contra sistema tradicional"
+          }
+        ],
+        "monthly_plan": "Mantenha disciplina rigorosa de stop loss. Nunca arrisque mais de 2% do capital por operação. Diversifique geograficamente.",
+        "warnings": [
+          "SEMPRE use stop loss",
+          "Não concentre mais de 5% em uma ação",
+          "Mantenha reserva em renda fixa para oportunidades",
+          "Evite FOMO (Fear of Missing Out)"
+        ]
+      }
+    },
+    "trader": {
+      "name": "Trader Ativo",
+      "description": "Foca em operações de curto prazo com gestão rigorosa de risco",
+      "criteria": {
+        "objetivo": ["trades"],
+        "experiencia": ["experiente_trades"],
+        "tolerancia_risco": ["adrenalina_risco"]
+      },
+      "strategy": {
+        "allocation": {
+          "reserva_operacional": 70,
+          "capital_trading": 30
+        },
+        "recommended_approach": [
+          {
+            "regra": "Regra dos 2%",
+            "descricao": "Nunca arrisque mais de 2% do capital total por trade"
+          },
+          {
+            "regra": "Stop Loss obrigatório",
+            "descricao": "Toda operação deve ter stop loss definido antes da entrada"
+          },
+          {
+            "regra": "Risk/Reward 1:2",
+            "descricao": "Para cada R$ 1 de risco, busque R$ 2 de retorno"
+          },
+          {
+            "regra": "Diário de trades",
+            "descricao": "Registre todas as operações para análise posterior"
+          }
+        ],
+        "prohibited_actions": [
+          "Fazer revenge trading (tentar recuperar perdas rapidamente)",
+          "Operar sem stop loss",
+          "Usar mais de 30% do capital em uma operação",
+          "Operar baseado em emoções"
+        ],
+        "daily_routine": "Análise pré-mercado, definição de pontos de entrada e saída, execução disciplinada, análise pós-mercado e atualização do diário de trades.",
+        "warnings": [
+          "90% dos traders perdem dinheiro - seja parte dos 10%",
+          "Disciplina é mais importante que análise técnica",
+          "Preserve capital - sem capital não há trading"
+        ]
+      }
+    }
+  },
+  "ai_decision_logic": {
+    "profile_scoring": {
+      "conservador": {
+        "conditions": [
+          "objetivo == 'acumular_patrimonio' AND capacidade_mensal <= 200",
+          "experiencia IN ['nunca_investi', 'poupanca_cdb']",
+          "tolerancia_risco IN ['sem_riscos', 'pequenos_riscos']"
+        ],
+        "score_weight": 1.0
+      },
+      "moderado": {
+        "conditions": [
+          "capacidade_mensal BETWEEN 200 AND 1000",
+          "experiencia IN ['poupanca_cdb', 'fundos_acoes']",
+          "tolerancia_risco == 'pequenos_riscos' OR 'riscos_retornos'"
+        ],
+        "score_weight": 1.0
+      },
+      "agressivo": {
+        "conditions": [
+          "capacidade_mensal > 1000 OR objetivo == 'quantia_maior'",
+          "experiencia IN ['fundos_acoes', 'experiente_trades']",
+          "tolerancia_risco IN ['riscos_retornos', 'adrenalina_risco']"
+        ],
+        "score_weight": 1.0
+      },
+      "trader": {
+        "conditions": [
+          "objetivo == 'trades'",
+          "experiencia == 'experiente_trades'",
+          "tolerancia_risco == 'adrenalina_risco'"
+        ],
+        "score_weight": 1.5
+      }
+    }
+  },
+  "coaching_messages": {
+    "motivational": {
+      "conservador": [
+        "Parabéns por manter a consistência! Pequenos aportes regulares constroem grandes patrimônios.",
+        "O mercado pode estar volátil, mas sua estratégia de longo prazo está no caminho certo.",
+        "Lembre-se: tempo no mercado é mais importante que timing do mercado."
+      ],
+      "moderado": [
+        "Sua diversificação está equilibrada. Continue rebalanceando conforme planejado.",
+        "Que tal aumentar gradualmente a exposição internacional?",
+        "Suas escolhas mostram maturidade financeira. Continue assim!"
+      ],
+      "agressivo": [
+        "Seus riscos estão sendo bem gerenciados. Mantenha a disciplina!",
+        "Lembre-se de não concentrar demais em uma única posição.",
+        "O mercado recompensa quem sabe esperar o momento certo."
+      ],
+      "trader": [
+        "Sua gestão de risco está salvando seu capital. Continue firme!",
+        "Stop loss é seu melhor amigo - nunca negocie isso.",
+        "Cada perda aceita hoje é capital preservado para amanhã."
+      ]
+    },
+    "warnings": {
+      "market_volatility": "O mercado está mais volátil. Para seu perfil {profile}, recomendo {action}.",
+      "consistent_investing": "Notei que você não fez aportes nos últimos {days} dias. Consistência é fundamental para seu perfil {profile}.",
+      "risk_management": "Sua exposição está acima do recomendado para seu perfil. Que tal rebalancear?"
+    }
+  }
+}
