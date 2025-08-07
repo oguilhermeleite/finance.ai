@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinanceAI - Seu Coach Financeiro Pessoal</title>
+    <meta name="description" content="Descubra sua estratégia de investimento ideal com IA. Coach financeiro personalizado para o mercado brasileiro.">
+    <link rel="stylesheet" href="app-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide@0.294.0/dist/umd/lucide.css">
+</head>
+<body>
+    <!-- App Header -->
+    <header class="app-header">
+        <div class="header-container">
+            <div class="logo-container">
+                <i class="lucide-brain-circuit"></i>
+                <span>FinanceAI</span>
+            </div>
+            <div class="user-menu">
+                <button class="menu-btn" id="userMenuBtn">
+                    <i class="lucide-user"></i>
+                </button>
+                <div class="user-dropdown" id="userDropdown">
+                    <a href="#perfil">Meu Perfil</a>
+                    <a href="#configuracoes">Configurações</a>
+                    <a href="#ajuda">Ajuda</a>
+                    <hr>
+                    <a href="#sair">Sair</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main App Container -->
+    <main class="app-main" id="appMain">
+        
+        <!-- Loading Screen -->
+        <div class="loading-screen" id="loadingScreen">
+            <div class="loading-content">
+                <div class="loading-logo">
+                    <i class="lucide-brain-circuit"></i>
+                </div>
+                <div class="loading-text">Carregando seu coach financeiro...</div>
+                <div class="loading-bar">
+                    <div class="loading-progress"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Welcome Screen -->
+        <div class="screen" id="welcomeScreen">
+            <div class="welcome-container">
+                <div class="welcome-hero">
+                    <i class="lucide-sparkles welcome-icon"></i>
+                    <h1>Bem-vindo ao FinanceAI</h1>
+                    <p>Seu coach financeiro pessoal está pronto para criar uma estratégia única para você</p>
+                </div>
+                <div class="welcome-features">
+                    <div class="feature-item">
+                        <i class="lucide-shield-check"></i>
+                        <span>100% Seguro</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="lucide-graduation-cap"></i>
+                        <span>Educativo</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="lucide-trending-up"></i>
+                        <span>Personalizado</span>
+                    </div>
+                </div>
+                <button class="btn-primary start-btn" onclick="startQuestionnaire()">
+                    Começar Agora
+                    <i class="lucide-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Questionnaire Screens -->
+        <div class="screen questionnaire-screen" id="questionnaireScreen">
+            <div class="questionnaire-container">
+                
+                <!-- Progress Bar -->
+                <div class="progress-container">
+                    <div class="progress-header">
+                        <span class="progress-text">Descobrindo seu perfil</span>
+                        <span class="progress-percentage">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-steps">
+                        <div class="step active" data-step="1"></div>
+                        <div class="step" data-step="2"></div>
+                        <div class="step" data-step="3"></div>
+                        <div class="step" data-step="4"></div>
+                    </div>
+                </div>
+
+                <!-- Question Cards -->
+                <div class="question-container" id="questionContainer">
+                    
+                    <!-- Question 1: Objetivo Principal -->
+                    <div class="question-card active" data-question="1">
+                        <div class="question-header">
+                            <i class="lucide-target question-icon"></i>
+                            <h2>Qual é seu objetivo financeiro principal?</h2>
+                            <p>Escolha a opção que mais se identifica com seus planos</p>
+                        </div>
+                        <div class="options-container">
+                            <div class="option-card" data-value="acumular_patrimonio">
+                                <i class="lucide-piggy-bank"></i>
+                                <div class="option-content">
+                                    <h3>Acumular Patrimônio</h3>
+                                    <p>Construir riqueza de forma consistente e segura ao longo do tempo</p>
+                                </div>
+                            </div>
+                            <div class="option-card" data-value="pequenos_investimentos">
+                                <i class="lucide-coins"></i>
+                                <div class="option-content">
+                                    <h3>Pequenos Investimentos</h3>
+                                    <p>Começar a investir com valores baixos mensalmente (R$ 10-200)</p>
+                                </div>
+                            </div>
+                            <div class="option-card" data-value="trades">
+                                <i class="lucide-trending-up"></i>
+                                <div class="option-content">
+                                    <h3>Fazer Trades</h3>
+                                    <p>Operações de curto prazo para lucros rápidos</p>
+                                </div>
+                            </div>
+                            <div class="option-card" data-value="quantia_maior">
+                                <i class="lucide-banknote"></i>
+                                <div class="option-content">
+                                    <h3>Investir Quantia Maior</h3>
+                                    <p>Tenho uma reserva e quero aplicar de uma vez</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 2: Capacidade de Investimento -->
+                    <div class="question-card" data-question="2">
+                        <div class="question-header">
+                            <i class="lucide-wallet question-icon"></i>
+                            <h2>Quanto consegue investir mensalmente?</h2>
+                            <p>Seja honesto sobre sua capacidade financeira atual</p>
+                        </div>
+                        <div class="options-container">
+                            <div class="option-card" data-value="ate_50">
+                                <i class="lucide-seedling"></i>
+                                <div class="option-content">
+                                    <h3>Até R$ 50</h3>
+                                    <p>Começando devagar, mas com consistência</p>
+                                </div>
+                            </div>
+                            <div class="option-card" data-value="51_200">
+                                <i class="lucide-sprout"></i>
+                                <div class="option-content">
+                                    <h3>R$ 51 - R$ 200</h3>
+                                    <p>Valor moderado para início dos investimentos</p>
+                                </div>
+                            </div>
+                            <div class="option-card" data-value="201_500">
+                                <i class="lucide-tree-pine"></i>
+                                <div class="option-content">
+                                    <h3>R$ 201 - R$ 500</h3>
+                                    <p>Bom potencial para diversificação</p>
+                                </div>
+                            </div>
+                            <div class="option-card" data-value="501_1000">
+                                <i class="lucide-trees"></i>
+                                <div class="option-content">
+                                    <h3>R$ 501 - R$ 1.000</h3>
+                                    <p>Capacidade sólida para investimentos</p>
+                                </div>
+                            </div>
+                            <div class="option-card" data-value="mais_1000">
+                                <i class="lucide-forest"></i>
+                                <div class="option-content">
+                                    <h3>Mais de R$ 1.000</h3>
+                                    <p>Investidor com alta capacidade mensal</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 3: Experiência -->
+                    <div class="question-card" data-question="3">
+                        <div class="question-header">
+                            <i class="lucide-graduation-cap question-icon"></i>
+                            <h2>Qual sua experiência com investimentos?</h2>
+                            <p>Queremos entender seu nível de conhecimento atual</p>
+                        </div>
+                        <div class="options-container">
+                            <div class="option-card" data-value="nunca_investi">
+                                <i class="lucide-baby"></i>
+                                <div class="option-content">
+                                    <h3>Nunca Investi</h3>
+                                    <p>Sou totalmente iniciante no mundo dos investimentos</p>
+                                </div>
+                            </div>
+                            <div class="option-card" data-value="poupanca_cdb">
+                                <i class="lucide-bookmark"></i>
+                                <div class="option-content">
+                                    <h3>Poupança/CDB</h3>
+                                    <p>Já investi em produtos mais conservadores</p>
+                                </div>
+                            </div>
+                            <div class="option-card" data-value="fundos_acoes">
+                                <i class="lucide-bar-chart"></i>
+                                <div class="option-content">
+                                    <h3>Fundos/Ações</h3>
+                                    <p>Tenho experiência com renda variável</p>
+                                </div>
+                            </div>
+                            <div class="option-card" data-value="experiente_trades">
+                                <i class="lucide-activity"></i>
+                                <div class="option-content">
+                                    <h3>Trader Experiente</h3>
+                                    <p>Faço operações regulares e entendo análises</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 4: Tolerância ao Risco -->
+                    <div class="question-card" data-question="4">
+                        <div class="question-header">
+                            <i class="lucide-shield question-icon"></i>
+                            <h2>Como você lida com perdas temporárias?</h2>
+                            <p>Entenda que investimentos podem ter altos e baixos</p>
+                        </div>
+                        <div class="options-container">
+                            <div class="option-card" data-value="sem_riscos">
+                                <i class="lucide-shield-check"></i>
+                                <div class="option-content">
+                                    <h3>Prefiro Não Arriscar</h3>
+                                    <p>Segurança em primeiro lugar, mesmo com menor retorno</p>
+                                </div>
+                            </div>
+                            <div class="option-card" data-value="pequenos_riscos">
+                                <i class="lucide-shield-alert"></i>
+                                <div class="option-content">
+                                    <h3>Aceito Pequenos Riscos</h3>
+                                    <p>Por melhores retornos, aceito volatilidade controlada</p>
+                                </div>
+                            </div>
+                            <div class="option-card" data-value="riscos_retornos">
+                                <i class="lucide-zap"></i>
+                                <div class="option-content">
+                                    <h3>Risco por Retorno</h3>
+                                    <p>Disposto a arriscar mais por ganhos maiores</p>
+                                </div>
+                            </div>
+                            <div class="option-card" data-value="adrenalina_risco">
+                                <i class="lucide-flame"></i>
+                                <div class="option-content">
+                                    <h3>Gosto da Adrenalina</h3>
+                                    <p>Alto risco não me assusta se o potencial for grande</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="question-navigation">
+                    <button class="btn-secondary" id="prevBtn" onclick="previousQuestion()" disabled>
+                        <i class="lucide-arrow-left"></i>
+                        Anterior
+                    </button>
+                    <button class="btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>
+                        Próxima
+                        <i class="lucide-arrow-right"></i>
+                    </button>
+                    <button class="btn-primary" id="finishBtn" onclick="generateProfile()" style="display:none;">
+                        Finalizar
+                        <i class="lucide-check"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div class="screen" id="resultsScreen">
+            <div class="results-container">
+                <div class="profile-reveal">
+                    <div class="profile-animation" id="profileAnimation">
+                        <i class="lucide-sparkles"></i>
+                    </div>
+                    <h2>Seu perfil foi identificado!</h2>
+                    <div class="profile-badge" id="profileBadge">
+                        <!-- Dynamic profile content -->
+                    </div>
+                </div>
+                <button class="btn-primary" onclick="goToDashboard()">
+                    Ver Minha Estratégia
+                    <i class="lucide-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Dashboard Screen -->
+        <div class="screen" id="dashboardScreen">
+            <div class="dashboard-container">
+                
+                <!-- Dashboard Header -->
+                <div class="dashboard-header">
+                    <div class="user-greeting">
+                        <h1>Olá, <span id="userName">investidor</span>!</h1>
+                        <p>Seu perfil: <span class="profile-tag" id="userProfile">Carregando...</span></p>
+                    </div>
+                    <div class="dashboard-stats">
+                        <div class="stat-card">
+                            <i class="lucide-target"></i>
+                            <div class="stat-content">
+                                <span class="stat-value">85%</span>
+                                <span class="stat-label">Meta do Mês</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="lucide-calendar-days"></i>
+                            <div class="stat-content">
+                                <span class="stat-value">12</span>
+                                <span class="stat-label">Dias Consistente</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <button class="action-btn" onclick="openCalculator()">
+                        <i class="lucide-calculator"></i>
+                        <span>Calculadora</span>
+                    </button>
+                    <button class="action-btn" onclick="openGoals()">
+                        <i class="lucide-flag"></i>
+                        <span>Metas</span>
+                    </button>
+                    <button class="action-btn" onclick="openGlossary()">
+                        <i class="lucide-book-open"></i>
+                        <span>Glossário</span>
+                    </button>
+                    <button class="action-btn" onclick="openSimulator()">
+                        <i class="lucide-trending-up"></i>
+                        <span>Simulador</span>
+                    </button>
+                </div>
+
+                <!-- Strategy Card -->
+                <div class="strategy-card" id="strategyCard">
+                    <div class="strategy-header">
+                        <i class="lucide-lightbulb"></i>
+                        <h3>Sua Estratégia Personalizada</h3>
+                    </div>
+                    <div class="strategy-content" id="strategyContent">
+                        <!-- Dynamic strategy content -->
+                    </div>
+                </div>
+
+                <!-- Educational Carousel -->
+                <div class="education-section">
+                    <div class="section-header">
+                        <h3>Dicas da Semana</h3>
+                        <div class="carousel-controls">
+                            <button class="carousel-btn" id="prevEducation">
+                                <i class="lucide-chevron-left"></i>
+                            </button>
+                            <button class="carousel-btn" id="nextEducation">
+                                <i class="lucide-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="education-carousel" id="educationCarousel">
+                        <!-- Dynamic education cards -->
+                    </div>
+                </div>
+
+                <!-- Coach Messages -->
+                <div class="coach-section">
+                    <div class="coach-card" id="coachCard">
+                        <div class="coach-header">
+                            <i class="lucide-message-circle"></i>
+                            <h3>Mensagem do Seu Coach</h3>
+                        </div>
+                        <div class="coach-content" id="coachContent">
+                            <!-- Dynamic coach message -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modals -->
+    
+    <!-- Compound Interest Calculator Modal -->
+    <div class="modal-overlay" id="calculatorModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Calculadora de Juros Compostos</h3>
+                <button class="close-btn" onclick="closeModal('calculatorModal')">
+                    <i class="lucide-x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="calculator-form">
+                    <div class="form-group">
+                        <label for="initialAmount">Valor Inicial (R$)</label>
+                        <input type="number" id="initialAmount" placeholder="1.000" value="1000">
+                    </div>
+                    <div class="form-group">
+                        <label for="monthlyContribution">Aporte Mensal (R$)</label>
+                        <input type="number" id="monthlyContribution" placeholder="100" value="100">
+                    </div>
+                    <div class="form-group">
+                        <label for="annualRate">Taxa Anual (%)</label>
+                        <input type="number" id="annualRate" placeholder="10" value="10" step="0.1">
+                    </div>
+                    <div class="form-group">
+                        <label for="timeYears">Período (anos)</label>
+                        <input type="number" id="timeYears" placeholder="5" value="5">
+                    </div>
+                    <button class="btn-primary" onclick="calculateCompound()">
+                        Calcular
+                        <i class="lucide-calculator"></i>
+                    </button>
+                </div>
+                <div class="calculator-results" id="calculatorResults">
+                    <!-- Dynamic results -->
+                </div>
+                <div class="chart-container">
+                    <canvas id="growthChart" width="400" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Goals Modal -->
+    <div class="modal-overlay" id="goalsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Definir Metas Financeiras</h3>
+                <button class="close-btn" onclick="closeModal('goalsModal')">
+                    <i class="lucide-x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="goals-form">
+                    <div class="form-group">
+                        <label for="goalName">Nome da Meta</label>
+                        <input type="text" id="goalName" placeholder="Ex: Casa própria">
+                    </div>
+                    <div class="form-group">
+                        <label for="goalAmount">Valor da Meta (R$)</label>
+                        <input type="number" id="goalAmount" placeholder="300.000">
+                    </div>
+                    <div class="form-group">
+                        <label for="goalDeadline">Prazo (anos)</label>
+                        <input type="number" id="goalDeadline" placeholder="10">
+                    </div>
+                    <button class="btn-primary" onclick="createGoal()">
+                        Criar Meta
+                        <i class="lucide-plus"></i>
+                    </button>
+                </div>
+                <div class="goals-list" id="goalsList">
+                    <!-- Dynamic goals -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Glossary Modal -->
+    <div class="modal-overlay" id="glossaryModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Glossário de Investimentos</h3>
+                <button class="close-btn" onclick="closeModal('glossaryModal')">
+                    <i class="lucide-x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="glossary-search">
+                    <input type="text" id="glossarySearch" placeholder="Buscar termo...">
+                    <i class="lucide-search"></i>
+                </div>
+                <div class="glossary-content" id="glossaryContent">
+                    <!-- Dynamic glossary terms -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <i class="toast-icon"></i>
+            <span class="toast-message"></span>
+        </div>
+        <button class="toast-close" onclick="closeToast()">
+            <i class="lucide-x"></i>
+        </button>
+    </div>
+
+    <!-- Achievement Toast -->
+    <div class="achievement-toast" id="achievementToast">
+        <div class="achievement-content">
+            <i class="lucide-award achievement-icon"></i>
+            <div class="achievement-text">
+                <span class="achievement-title"></span>
+                <span class="achievement-description"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.294.0/dist/umd/lucide.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app-script.js"></script>
+</body>
+</html>
